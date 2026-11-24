@@ -1,0 +1,67 @@
+/* Independent artwork and backdrop: the texture always fills the hero. */
+.hero {
+  background: #1c087c url('../assets/images/slides-background.jpg') center top / cover no-repeat;
+  overflow: clip;
+}
+.hero::after { display: none; }
+.hero-content { position: static; }
+.hero-art {
+  position: absolute;
+  top: 150px;
+  right: 0;
+  width: min(60vw, 1100px);
+  z-index: -1;
+  pointer-events: none;
+}
+.hero-art img {
+  width: 100%;
+  height: auto;
+  translate: 0 var(--hero-drift, 0px);
+}
+.steam-cta { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.steam-availability,
+.community .steam-availability {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.button.steam { min-width: 210px; min-height: 64px; padding: 16px 30px; }
+.steam .steam-logo { width: 148px; height: auto; }
+.community .actions { align-items: flex-end; }
+.community .actions > .button { min-height: 64px; }
+@media (min-width: 1800px) {
+  .hero-art { right: max(0px, calc((100vw - 2000px) / 2)); }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .hero-content { width: 45%; margin-left: 5%; }
+  .hero-art { width: 50%; top: 180px; }
+  .hero-copy { font-size: clamp(19px, 2.2vw, 23px); }
+  .hero h1 { width: min(100%, 360px); }
+}
+@media (max-width: 700px) {
+  .hero { min-height: 0; padding-bottom: 24px; background-position: center top; }
+  .hero-content { width: 90%; max-width: 440px; margin: 24px auto 0; }
+  .hero-art {
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: auto;
+    width: min(90%, 340px);
+    margin: 28px auto 0;
+  }
+  .hero-art img { translate: none; }
+  .hero .trailer { margin-top: 22px; }
+  .hero-copy, .hero .eyebrow { text-shadow: none; }
+  .community .steam-cta { width: 100%; }
+  .community .actions { align-items: stretch; }
+  .community .actions > .button { min-height: 56px; }
+  .button.steam { min-height: 60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-art img { translate: none; }
+}
+body.motion-paused .hero-art img { translate: none; }
+.community p.steam-availability { color: #fff; }
+.community .steam-logo { margin: 0; border-radius: 0; }

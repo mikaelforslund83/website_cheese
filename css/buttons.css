@@ -1,0 +1,55 @@
+/* Approved cheese design: flat golden holes on a warm, rounded surface. */
+:root {
+  --cheese-hole: #de9820;
+  --cheese-surface: linear-gradient(105deg, #ffd443 0%, #ffc239 65%, #ffaf4b 100%);
+}
+.button.clean-button,.button.cheese-button {
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  width: min(100%, 280px); min-height: 80px; aspect-ratio:3 / 1;
+  padding:18px 32px;border:0;border-radius:999px;box-shadow:none;
+  color:#24133e;text-align:center;text-decoration:none;cursor:pointer;
+  font-family:'Fredoka',sans-serif;font-size:18px;font-weight:700;line-height:1.2;
+  background:
+    radial-gradient(ellipse 3.3% 10% at 16.9% 25.2%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(ellipse 3.3% 10% at 80.7% 20.3%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(ellipse 2% 6% at 7.2% 56%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(ellipse 2% 6% at 93.7% 57%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(ellipse 3.3% 10% at 22.8% 81.4%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(ellipse 3.3% 10% at 81.6% 79.1%,var(--cheese-hole) 97%,transparent 100%),
+    var(--cheese-surface);
+  transition:transform 180ms ease,filter 180ms ease;
+}
+.button.steam {min-width:0;}
+.button.steam .steam-logo {width:148px;max-width:70%;height:auto;margin:0;}
+.button:focus-visible {outline:3px solid #fff9d8;outline-offset:6px;}
+.community .actions {gap:24px;}
+.community .steam-cta {width:min(100%,280px);}
+.community .actions>.button {min-height:80px;}
+/* Keep decorative holes in the cards' outer padding, away from the quotes. */
+.press-quote,.press-quote:hover {
+  border:0;border-radius:32px;box-shadow:none;padding:48px 36px;
+  color:#24133e;
+  background:
+    radial-gradient(circle 12px at 17% 19px,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(circle 12px at 81% 19px,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(circle 7px at 13px 56%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(circle 7px at calc(100% - 13px) 57%,var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(circle 12px at 23% calc(100% - 19px),var(--cheese-hole) 97%,transparent 100%),
+    radial-gradient(circle 12px at 82% calc(100% - 19px),var(--cheese-hole) 97%,transparent 100%),
+    var(--cheese-surface);
+}
+.press-quote blockquote,.press-quote figcaption,.press-quote .article-link {color:#24133e;}
+.press-quote figcaption small {color:#503420;}
+@media(hover:hover) and (pointer:fine) {
+  .button.clean-button:hover,.button.cheese-button:hover {transform:translateY(-3px);filter:brightness(1.04);}
+}
+.button.clean-button:active,.button.cheese-button:active {transform:translateY(2px) scale(.98);}
+@media(max-width:700px) {
+  .community .steam-cta,.community .actions>.button {width:100%;}
+  .press-quote,.press-quote:hover {padding:46px 30px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .button.clean-button,.button.cheese-button {transition:none;}
+  .button.clean-button:hover,.button.clean-button:active,.button.cheese-button:hover,.button.cheese-button:active {transform:none;}
+}
+body.motion-paused .button:hover,body.motion-paused .button:active {transform:none;}

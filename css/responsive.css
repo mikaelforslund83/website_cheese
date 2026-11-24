@@ -1,0 +1,100 @@
+/* Small-screen adaptations; desktop composition stays in styles.css. */
+.menu-toggle{display:none}
+@media(max-width:1000px){
+  .header{gap:16px;flex-wrap:wrap}
+  .header .studio-logo{width:160px}
+  .header nav{gap:8px 20px;width:100%;flex-wrap:wrap}
+  .header nav a{min-height:44px;display:inline-flex!important;align-items:center}
+  .header nav a.nav-steam{display:none!important}
+  .menu-toggle:not([hidden]){display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 12px;color:var(--white);border:1px solid #ffffff55;border-radius:7px;background:#1a0c50;font:inherit;font-size:14px;cursor:pointer}
+  .menu-toggle svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+  .header.nav-enhanced nav{display:none}
+  .header.nav-enhanced.menu-open nav{display:flex}
+  .header>a{margin:0}
+  .hero{min-height:0;padding-bottom:24px;background-position:65% center}
+  .hero-content{width:min(52%,500px);margin:32px 0 0 5%}
+  .hero h1{width:min(100%,360px)}
+  .explore-link{position:relative;left:auto;right:auto;bottom:auto;transform:none;margin:34px auto 0}
+  .award-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px}
+  .feature,.contact,.community{gap:30px}
+  .section{padding:56px 5%}
+  .section>*{min-width:0}
+  .contact-email,footer a{overflow-wrap:anywhere}
+}
+@media(max-width:700px){
+  body{font-size:16px;line-height:1.65;background-size:1100px auto}
+  .header{margin-inline:5%;padding:16px 0}
+  .header .studio-logo{width:145px}
+  .header.nav-enhanced.menu-open nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;border-top:1px solid #ffffff25;padding-top:12px}
+  .header nav a:not(.nav-steam){padding:10px 8px;font-size:16px}
+  .hero{background-size:auto 680px;background-position:63% 65px}
+  .hero:after{background:linear-gradient(0deg,#171035 0%,#170751b8 52%,#17075166 100%)}
+  .hero-content{width:90%;max-width:440px;margin:24px auto 0}
+  .hero .eyebrow{font-size:12px;letter-spacing:.1em;margin-bottom:12px}
+  .hero h1{width:clamp(230px,70vw,330px);max-width:100%;margin-bottom:12px}
+  .hero-copy{font-size:clamp(18px,4.8vw,22px);max-width:350px;margin-bottom:22px}
+  .hero .steam{padding:14px 32px}
+  .steam .steam-logo{width:132px}
+  .trailer{width:100%;max-width:440px;margin-top:30px}
+  .trailer-caption{display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:14px!important}
+  .explore-link{margin-top:12px;font-size:14px;min-height:44px;padding:8px 24px}
+  .section{padding:48px 5%}
+  .feature,.game-intro,.chapter-copy,.screenshot-pair,.community,.contact,.press-grid{grid-template-columns:minmax(0,1fr)}
+  .game-intro{margin-top:0;gap:24px}
+  .game-intro>div{grid-row:1}
+  .game-intro h2,.contact h2,.community h2,.press h2{font-size:clamp(30px,7.5vw,40px)}
+  .chapter-copy h3{font-size:clamp(28px,7vw,36px)}
+  .chapter-copy{gap:16px;margin-bottom:22px}
+  .game-chapter{margin-top:44px}
+  .screenshot-pair{gap:20px}
+  .press-grid{gap:18px}.press-quote,.press-quote:nth-child(n+4){grid-column:auto;padding:24px}
+  .press-quote blockquote{font-size:23px;margin-bottom:22px}
+  .press .section-heading{margin-bottom:28px}
+  .article-link,.contact-press{min-height:44px;display:inline-flex;align-items:center;margin-top:8px}
+  .showcase-quote{margin-top:32px}.showcase-quote blockquote{font-size:18px}
+  .community .actions{flex-direction:column;align-items:stretch;gap:26px;margin-top:24px}
+  .community .cheese-button{width:100%;min-height:52px}
+  .contact-details{gap:14px}.contact-button{min-height:48px}
+  .community>img{margin-top:6px}
+  footer.section{grid-template-columns:1fr 1fr;gap:24px}
+  footer a{min-height:44px;display:flex;align-items:center;margin-bottom:0}
+  footer>div:first-child{grid-column:1/-1}
+  footer .studio-logo{margin-bottom:0}
+  .motion-toggle{min-height:44px;grid-column:1/-1}
+  .award-grid{gap:30px 12px;margin:28px 0}
+  .award{padding:10px 22px}.award h2{font-size:18px}.award span:not(.award-sparkles){font-size:11px;letter-spacing:.04em}.award p{font-size:14px}
+  .award:before,.award:after{width:23px}.more-awards{font-size:14px}
+  .hero{--hero-drift:0px!important}
+  #game img,.community>img{translate:none!important}
+  .reveal.pending{opacity:1;transform:none}
+}
+@media(max-width:380px){
+  .award-grid{grid-template-columns:1fr}.award{max-width:270px;width:100%;margin:auto}
+  footer.section{grid-template-columns:1fr}
+  .hero .eyebrow{font-size:11px}
+}
+@media(hover:none){
+  .button:hover,.award:hover,.press-quote:hover{transform:none}
+  .hero{--hero-drift:0px!important}#game img,.community>img{translate:none!important}
+}
+/* Airier artwork and a full-screen mobile navigation panel. */
+@media(max-width:1000px){
+  .hero{background-size:auto 85%;background-repeat:no-repeat;background-position:72% 80px}
+  .hero:after{background:linear-gradient(0deg,#171035 0%,transparent 14%)}
+  .header.menu-open{position:relative;z-index:20}
+  .header.menu-open .menu-toggle{position:fixed;top:max(16px,env(safe-area-inset-top));right:5%;z-index:102;background:#24105c}
+  .header.nav-enhanced.menu-open nav{position:fixed;inset:0;z-index:101;display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;justify-content:center;gap:12px;width:100%;height:100dvh;min-height:100vh;margin:0;padding:max(88px,env(safe-area-inset-top)) 9% max(32px,env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain;background:#190952 url('../assets/images/slides-background.jpg') center/cover;border:0}
+  .header.nav-enhanced.menu-open nav a:not(.nav-steam){display:flex!important;justify-content:center;padding:14px 20px;min-height:56px;font-size:clamp(22px,5vw,34px);border:0;border-radius:8px}
+  .header.nav-enhanced.menu-open nav a:hover,.header.nav-enhanced.menu-open nav a:focus-visible{background:#ffffff12}
+  body.menu-visible{overflow:hidden}
+}
+@media(max-width:700px){
+  .hero{background-size:auto 500px;background-position:62% 80px}
+  .hero h1{width:clamp(210px,62vw,285px)}
+  .hero:after{background:linear-gradient(0deg,#171035 0%,transparent 12%)}
+  .hero-copy,.hero .eyebrow{ text-shadow:0 2px 8px #120630,0 1px 3px #120630 }
+}
+@media(max-height:540px) and (max-width:1000px){
+  .header.nav-enhanced.menu-open nav{justify-content:flex-start;gap:2px;padding-top:70px}
+  .header.nav-enhanced.menu-open nav a:not(.nav-steam){min-height:46px;padding:8px 20px;font-size:22px}
+}

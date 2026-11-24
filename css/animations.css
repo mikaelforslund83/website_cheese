@@ -1,0 +1,105 @@
+/* Artwork uses its own layer so the entrance never shifts text or controls. */
+@keyframes heroArtworkIn{from{opacity:0;transform:translate3d(7%,0,0) scale(1.025)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+.hero.art-ready .hero-art{animation:heroArtworkIn 1.15s cubic-bezier(.2,.7,.25,1) both}
+/* Clip entrance travel only inside sections, avoiding horizontal page scroll. */
+main>.section{overflow:clip}
+.reveal{transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.25,1)}
+.reveal.pending.from-left{opacity:0;transform:translate3d(-32px,18px,0)}
+.reveal.pending.from-right{opacity:0;transform:translate3d(32px,18px,0)}
+.press-quote{position:relative;color:#32200b;border:1px solid #fff1a1;border-radius:12px 16px 9px 12px;background:radial-gradient(ellipse 14px 10px at 6% 7%,#d99a22 80%,#fff09a 96%,transparent 100%),radial-gradient(ellipse 10px 8px at 92% 12%,#e4a82c 80%,#ffed93 96%,transparent 100%),radial-gradient(ellipse 15px 11px at 94% 92%,#d99a22 80%,#fff09a 96%,transparent 100%),linear-gradient(135deg,#fff39a,#ffd653 80%);box-shadow:0 8px 0 #d79b24,0 12px 0 #a96c15,0 20px 30px #10052c40;padding:38px 28px 30px}
+.press-grid{row-gap:38px}
+.press-quote blockquote{color:#32200b;text-shadow:none}
+.press-quote figcaption{color:#593710;font-weight:bold}
+.press-quote figcaption small{color:#60451f;font-weight:normal}
+.press-quote .article-link{color:#432b10;font-weight:bold}
+.press-quote a:focus-visible{outline-color:#4b2d0c}
+.contact-details{gap:30px}
+@media(hover:hover) and (pointer:fine){.press-quote:hover{border-color:#fff6bd;box-shadow:0 10px 0 #d79b24,0 14px 0 #a96c15,0 24px 34px #10052c55}}
+@media(max-width:700px){.reveal.pending.from-left{transform:translate3d(-16px,12px,0)}.reveal.pending.from-right{transform:translate3d(16px,12px,0)}.press-quote{padding:32px 24px 28px}}
+@media(prefers-reduced-motion:reduce){.hero.art-ready .hero-art{animation:none}.reveal.pending.from-left,.reveal.pending.from-right{opacity:1;transform:none}}
+body.motion-paused .hero-art{animation:none!important;opacity:1;transform:none}
+body.motion-paused .reveal.pending{opacity:1;transform:none}
+
+/* Consistent typography across desktop and responsive overrides. */
+body{font-family:'Fredoka',sans-serif;font-weight:500}
+h2,h3{font-family:'Lilita One',sans-serif;font-weight:400;letter-spacing:-.02em;line-height:1.1}
+.header nav{font-family:'Fredoka',sans-serif;font-weight:600}
+.button,button{font-family:'Fredoka',sans-serif;font-weight:700}
+.eyebrow{font-family:'Fredoka',sans-serif;font-weight:700}
+.award h2,.feature h3,.section-heading h2,.community h2,.press h2,.contact h2{font-family:'Lilita One',sans-serif;font-weight:400}
+p{font-weight:500}
+.award span,.press-quote figcaption{font-weight:600}
+.award p,.more-awards,.trailer-caption,.press-quote figcaption small,.showcase-quote>p,footer p{font-weight:400}
+.press-quote blockquote,.article-link,.contact-email{font-weight:700}
+.steam small{font-weight:600}
+.hero-copy{line-height:1.35}
+.press-quote blockquote{line-height:1.35}
+
+/* Reuse the hero logo interaction in the closing community section. */
+.community .community-logo{width:min(100%,380px);margin:0 0 26px}
+.community .community-logo img{width:100%;height:auto;border-radius:0;transition:transform .4s ease,filter .4s ease;transform-origin:center}
+.community .community-logo:hover{transform:none;text-shadow:none}
+.community .actions{align-items:center}
+@media(hover:hover) and (pointer:fine){.community-logo:hover img{transform:rotate(-2deg) scale(1.045);filter:drop-shadow(0 10px 18px #f0bd5338)}}
+@media(max-width:700px){.community .community-logo{width:min(100%,285px);margin-inline:auto}.community .actions{align-items:stretch}}
+@media(prefers-reduced-motion:reduce){.community-logo:hover img{transform:none;transition:none}}
+body.motion-paused .community-logo:hover img{transform:none;transition:none}
+
+/* A single gentle page entrance; content stays visible without JavaScript. */
+@keyframes siteFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+body { animation: siteFadeIn 850ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none; }
+}
+body.motion-paused { animation: none; }
+
+/* A single smooth turn per hover, returning the logo to its readable face. */
+.hero h1,.community .community-logo {perspective:1000px;}
+.hero h1 img,.community .community-logo img {
+  transform-origin:center;
+  backface-visibility:hidden;
+  transition:filter .35s ease;
+}
+@keyframes logoFlip {
+  0% {transform:rotateY(0deg) scale(1);}
+  45% {transform:rotateY(170deg) scale(1.035);}
+  100% {transform:rotateY(360deg) scale(1);}
+}
+.hero .eyebrow,.steam-availability,main h2,main h3,.hero-copy {
+  transition:color .25s ease,text-shadow .3s ease,transform .3s ease;
+}
+.header nav a:not(.nav-steam),.article-link,.contact-press,.trailer-caption,footer a {
+  text-underline-offset:5px;
+  transition:color .25s ease,text-shadow .25s ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .hero h1:hover img,.community .community-logo:hover img {
+    transform:none;
+    animation:logoFlip 1.25s cubic-bezier(.45,0,.2,1) both;
+    filter:drop-shadow(0 8px 18px #ffc94355);
+  }
+  main h2:not(.community-logo):hover,main h3:hover,.hero-copy:hover {
+    color:#ffdb55;
+    text-shadow:0 3px 0 #10072a,0 7px 20px #ffca4333;
+    transform:translateY(-3px);
+  }
+  .hero .eyebrow:hover,.steam-availability:hover {
+    text-shadow:0 0 16px #ffda5577;
+    transform:translateY(-2px);
+  }
+  .header nav a:hover,.contact-press:hover,.trailer-caption:hover,footer a:hover {
+    color:#ffdb55;text-shadow:0 0 16px #ffca4355;
+  }
+  .press-quote .article-link:hover {color:#24133e;text-decoration-thickness:2px;}
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero h1:hover img,.community .community-logo:hover img,
+  .hero .eyebrow:hover,.steam-availability:hover {animation:none;transform:none;}
+}
+body.motion-paused .hero h1:hover img,
+body.motion-paused .community .community-logo:hover img,
+body.motion-paused .hero .eyebrow:hover,
+body.motion-paused .steam-availability:hover {animation:none;transform:none;}
